@@ -24,5 +24,15 @@ indirect enum LogicExpression: CustomStringConvertible {
     }
 }
 
+extension LogicExpression {
+    init?(_ string: String, value: String?=nil, left: LogicExpression?=nil, right: LogicExpression?=nil) {
+        switch(string) {
+            case "constant":
+                guard let value=value, (value=='T' || value=='F') else { return nil }
+            case "variable":
+        }
+    }
+}
+
 let expr = LogicExpression.and(.variable("p123"), .or(.variable("x345"), .not(.constant("T"))))
 print(expr)
